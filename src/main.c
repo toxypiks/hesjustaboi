@@ -1,7 +1,16 @@
 #include <stdio.h>
+#include <raylib.h>
 
 int main()
 {
-    printf("Hello starboi\n");
+    InitWindow(280, 240, "starboi");
+    SetTargetFPS(60);
+
+    while(!WindowShouldClose()) {
+        BeginDrawing();
+        ClearBackground(BLACK);
+        EndDrawing();
+    }
+    CloseWindow();
     return 0;
 }
