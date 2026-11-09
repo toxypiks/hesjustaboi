@@ -8,6 +8,26 @@ include_directories(include)
 
 find_package(raylib)
 
+set(EYES_SRC
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/eyes.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/eyes.h
+)
+
+add_library(eyes)
+target_sources(eyes
+ PRIVATE
+  ${EYES_SRC}
+  )
+
+target_include_directories(eyes
+ PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_link_libraries(eyes
+  ${raylib}
+)
+
 set(MAIN
   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.c
   )
@@ -20,4 +40,5 @@ target_sources(main
 
 target_link_libraries(main
   raylib
+  eyes
 )
