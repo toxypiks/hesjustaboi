@@ -28,6 +28,26 @@ target_link_libraries(eyes
   ${raylib}
 )
 
+set(GRAPHICS_SRC
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/graphics.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/graphics.h
+)
+
+add_library(graphics)
+target_sources(graphics
+ PRIVATE
+  ${GRAPHICS_SRC}
+  )
+
+target_include_directories(graphics
+ PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_link_libraries(graphics
+  ${raylib}
+)
+
 set(MAIN
   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.c
   )
@@ -40,5 +60,6 @@ target_sources(main
 
 target_link_libraries(main
   raylib
+  graphics
   eyes
 )
